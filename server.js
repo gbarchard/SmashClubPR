@@ -1,5 +1,7 @@
 let Colley = require('colley-rankings');
-let C = Colley(5); // Create a 5-team league
+
+
+players = []
 results = 
 [
     {
@@ -146,11 +148,24 @@ results =
 
 results.forEach(match => {
 
-    var winner_id = match.match.winner_id
-    var loser_id = match.match.loser_id
-    C.addGame(winner_id, loser_id);    
+    var winner = match.match.winner_id
+    var loser = match.match.loser_id
+    if (players.indexOf(winner) === -1) {
+        players.push(winner)
+    }
+    if (players.indexOf(loser) === -1) {
+        players.push(loser)
+    }
 });
 
+let C = Colley(players.length); // Create a n-team league
 
+results.forEach(match => {
+    var winner = match.match.winner_id
+    var loser = match.match.loser_id
+    winner_id = players.indexOf(winner)
+    loser_id = players.indexOf(loser)
+    C.addGame(winner_id, loser_id);
+});
 console.log(C.solve());
 // console.log(results);
