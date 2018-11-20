@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/gbarchard/SmashClubPR#readme",
   "dependencies": {
-    "colley-rankings": "^1.0.2"
+    "colley-rankings": "^1.0.2",
+    "node-rest-client": "^3.1.0"
   }
 }
