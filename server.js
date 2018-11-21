@@ -34,7 +34,12 @@ client.get("https://api.challonge.com/v1/tournaments/${id}/matches.json", args, 
         loser_id = players.indexOf(match.match.loser_id)
         C.addGame(winner_id, loser_id);
     });
-    console.log(C.solve());
-    console.log(players)
-    console.log(C.getRatings())
+
+    let scores = (C.solve().array)
+    let poll = []
+    players.forEach(player => {
+        poll.push([player, scores[0]])
+        scores.shift()
+    });
+    console.log(poll)
 });
