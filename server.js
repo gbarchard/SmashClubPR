@@ -4,7 +4,6 @@ let Client = require('node-rest-client').Client;
 let client = new Client();
 
 let players = []
-let tournament = []
  
 var args = {
     path: {"id":5244080},
@@ -37,4 +36,5 @@ client.get("https://api.challonge.com/v1/tournaments/${id}/matches.json", args, 
     });
     console.log(C.solve());
     console.log(players)
+    console.log(C.getRatings())
 });
