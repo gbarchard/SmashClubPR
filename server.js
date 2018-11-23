@@ -6,11 +6,11 @@ var getColleyScores = require('./functions/get-colley-scores.js');
 var createPoll = require('./functions/create-poll.js');
 
 function runPoll(allMatches) {
-        let allPlayers = []
-        allPlayers = findPlayersInTournament(allMatches)
-        let scores = getColleyScores(allMatches, allPlayers)
-        let poll = createPoll(allPlayers, scores)
-        console.log(poll)
+    let allPlayers = []
+    allPlayers = findPlayersInTournament(allMatches)
+    let scores = getColleyScores(allMatches, allPlayers)
+    let poll = createPoll(allPlayers, scores)
+    console.log(poll)
 }
 
 findTournaments( function(tournaments, response) {
