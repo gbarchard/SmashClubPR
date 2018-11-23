@@ -1,4 +1,4 @@
-var listTournamentMatches = function listTournamentMatches(tournamentID, callback) {
+var findTournamentMatches = function findTournamentMatches(tournamentID, callback) {
     let Client = require('node-rest-client').Client; 
     let client = new Client();
     
@@ -22,7 +22,4 @@ var listTournamentMatches = function listTournamentMatches(tournamentID, callbac
     client.get("${baseURL}/${apiVersion}/${method}/${id}/${object}.${format}", args, callback)
 }
 
-module.exports = listTournamentMatches;
-
-
-
+module.exports = findTournamentMatches;
