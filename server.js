@@ -1,8 +1,5 @@
 let Colley = require('colley-rankings');
 
-let Client = require('node-rest-client').Client; 
-let client = new Client();
-
 var listTournamentMatches = require('./sources/challonge/tournaments/list-tournament-matches.js');
 
 let players = []
