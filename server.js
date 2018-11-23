@@ -3,20 +3,11 @@ let Colley = require('colley-rankings');
 let Client = require('node-rest-client').Client; 
 let client = new Client();
 
-const config = require("./config.json");
+var listTournamentMatches = require('./sources/challonge/tournaments/list-tournament-matches.js');
 
 let players = []
- 
-var args = {
-    path: {"id":5244080},
-    parameters: {
-        api_key:config.api_key,
-        state:"complete"
-    } 
-}
 
-client.get("https://api.challonge.com/v1/tournaments/${id}/matches.json", args, function (tournament, response) {
-    
+listTournamentMatches(5244080, function (tournament, response) {
     tournament.forEach(match => {
 
         var winner = match.match.winner_id
@@ -28,7 +19,7 @@ client.get("https://api.challonge.com/v1/tournaments/${id}/matches.json", args, 
             players.push(loser)
         }
     });
-    
+
     let C = Colley(players.length); // Create a n-person league
     
     tournament.forEach(match => {
@@ -56,4 +47,4 @@ client.get("https://api.challonge.com/v1/tournaments/${id}/matches.json", args, 
     }
 
     console.log(poll)
-});
+})
