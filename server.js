@@ -26,5 +26,3 @@ findTournaments( function(tournaments, response) {
         }); 
     })
 })
-
-//https://stackoverflow.com/questions/18983138/callback-after-all-asynchronous-foreach-callbacks-are-completed
