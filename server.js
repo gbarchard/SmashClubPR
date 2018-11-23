@@ -1,59 +1,28 @@
-let Colley = require('colley-rankings');
 
-let Client = require('node-rest-client').Client; 
-let client = new Client();
+var findTournamentMatches = require('./sources/challonge/tournaments/list-tournament-matches.js');
+var findTournaments = require('./sources/challonge/tournaments/list-tournaments.js');
+var findPlayersInTournament = require('./functions/find-players-in-tournament.js');
+var getColleyScores = require('./functions/get-colley-scores.js');
+var createPoll = require('./functions/create-poll.js');
 
-const config = require("./config.json");
-
-let players = []
- 
-var args = {
-    path: {"id":5244080},
-    parameters: {
-        api_key:config.api_key,
-        state:"complete"
-    } 
+function runPoll(allMatches) {
+    let allPlayers = []
+    allPlayers = findPlayersInTournament(allMatches)
+    let scores = getColleyScores(allMatches, allPlayers)
+    let poll = createPoll(allPlayers, scores)
+    console.log(poll)
 }
 
-client.get("https://api.challonge.com/v1/tournaments/${id}/matches.json", args, function (tournament, response) {
-    
-    tournament.forEach(match => {
-
-        var winner = match.match.winner_id
-        var loser = match.match.loser_id
-        if (players.indexOf(winner) === -1) {
-            players.push(winner)
-        }
-        if (players.indexOf(loser) === -1) {
-            players.push(loser)
-        }
-    });
-    
-    let C = Colley(players.length); // Create a n-person league
-    
-    tournament.forEach(match => {
-        winner_id = players.indexOf(match.match.winner_id)
-        loser_id = players.indexOf(match.match.loser_id)
-        C.addGame(winner_id, loser_id);
-    });
-
-    let scores = (C.solve().array)
-    let poll = []
-    players.forEach(player => {
-        poll.push([player, scores[0]])
-        scores.shift()
-    });
-
-    poll.sort(compareSecondColumn);
-
-    function compareSecondColumn(b, a) {
-        if (a[1] === b[1]) {
-            return 0;
-        }
-        else {
-            return (a[1] < b[1]) ? -1 : 1;
-        }
-    }
-
-    console.log(poll)
-});
+findTournaments( function(tournaments, response) {
+    var allMatches = []
+    var itemsProcessed = 0
+    tournaments.forEach((tournament, index, array) => {
+        findTournamentMatches(tournament.tournament.id, function (tournament, response) { //need for each here
+            allMatches = allMatches.concat(tournament)
+            itemsProcessed++
+            if (itemsProcessed === array.length) {
+                runPoll(allMatches)
+            }
+        }); 
+    })
+})
