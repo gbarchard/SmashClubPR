@@ -13,7 +13,13 @@ var createPoll = function createPoll(players, scores) {
 				return (a[1] < b[1]) ? -1 : 1;
 		}
 	}	
-	return poll.sort(compareSecondColumn);
+	poll = poll.sort(compareSecondColumn);
+	let rankings = []
+	poll.forEach((record, index) => {
+		record.unshift(index+1);
+		rankings.push(record)
+	});
+	return rankings
 }
 
 module.exports = createPoll;
