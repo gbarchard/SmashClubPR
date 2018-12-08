@@ -2,16 +2,17 @@
 var findTournamentMatches = require('./sources/challonge/tournaments/list-tournament-matches.js');
 var findTournaments = require('./sources/challonge/tournaments/list-tournaments.js');
 var findPlayersInTournament = require('./functions/find-players-in-tournament.js');
-var idToName = require('./functions/id-to-name.js')
 var getColleyScores = require('./functions/get-colley-scores.js');
 var createPoll = require('./functions/create-poll.js');
+var addNamesToMatches = require('./functions/add-names-to-matches.js');
 
 function runPoll(allMatches) {
+    // console.log(addNamesToMatches(allMatches))
+    allMatches = addNamesToMatches(allMatches)
     let allPlayers = []
     allPlayers = findPlayersInTournament(allMatches)
     let scores = getColleyScores(allMatches, allPlayers)
     let poll = createPoll(allPlayers, scores)
-    var pollWithNames = idToName(poll)
 
     console.log(poll)
 }
