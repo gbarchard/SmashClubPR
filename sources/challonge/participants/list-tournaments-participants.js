@@ -10,12 +10,11 @@ var findTournamentParticipants = function findTournamentParticipants(tournamentI
             "baseURL": "https://api.challonge.com",
             "apiVersion": "v1",
             "method": "tournaments",
-            "object": "participant",
+            "object": "participants",
             "format": "json"
         },
         parameters: {
-            api_key: config.api_key,
-            state: "complete"
+            api_key: config.api_key
         } 
     }
 
