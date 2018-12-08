@@ -1,42 +1,34 @@
-var findTournaments = require('./sources/challonge/tournaments/list-tournaments.js');
-var findTournamentMatches = require('./sources/challonge/tournaments/list-tournament-matches.js');
-var findTournamentParticipants = require('./sources/challonge/participants/list-tournaments-participants.js');
-var findAllParticipants = require('./functions/find-players-in-tournament.js');
-var getColleyScores = require('./functions/get-colley-scores.js');
-var createPoll = require('./functions/create-poll.js');
-var addNamesToMatches = require('./functions/add-names-to-matches.js');
+var Discord = require('discord.io');
+var getPoll = require('./functions/get-poll.js');
 
+var bot = new Discord.Client({
+    token: "NTIwOTgyODg4NzA4MTc3OTIw.Du15Ww.R6BdEP-pDABePrizI82_h0jcqdE",
+    autorun: true
+});
+ 
+bot.on('ready', function() {
+    console.log("got here")
+    console.log('Logged in as %s - %s\n', bot.username, bot.id);
+});
 
-function runPoll(allMatches,allParticipants) {
-    // console.log(addNamesToMatches(allMatches))
-    allMatches = addNamesToMatches(allMatches,allParticipants)
-    let allParticipantsNames = []
-    allParticipantsNames = findAllParticipants(allMatches)
-    let scores = getColleyScores(allMatches, allParticipantsNames)
-    let poll = createPoll(allParticipantsNames, scores)
+bot.on('disconnect', function(errMsg, code) {
+    console.log(errMsg)
+    console.log(code)
 
-    console.log(poll)
-}
-findTournaments( function(tournaments, response) {
-    var allMatches = []
-    var itemsProcessed = 0
-    tournaments.forEach((tournament, index, array) => {
-        findTournamentMatches(tournament.tournament.id, function (tournament, response) {
-            allMatches = allMatches.concat(tournament)
-            itemsProcessed++
-            if (itemsProcessed === array.length) {
-                var allParticipants = []
-                var tournamentsProcessed = 0
-                tournaments.forEach((tournament, index, list) => {
-                    findTournamentParticipants(tournament.tournament.id, function (participants, response) {
-                        allParticipants = allParticipants.concat(participants)
-                        tournamentsProcessed++
-                        if (tournamentsProcessed === list.length) {
-                            runPoll(allMatches,allParticipants)
-                        }
-                    })
-                })
-            }
-        }); 
-    })
-})
+ });
+
+ 
+bot.on('message', function(user, userID, channelID, message, event) {
+    if (user != "PR") {
+        let poll = ""
+        console.log(user)
+        if (message === "!pr") {
+            getPoll(function(poll) {
+                bot.sendMessage({
+                    to: channelID,
+                    message: poll
+                });
+            })
+        }
+    }
+});

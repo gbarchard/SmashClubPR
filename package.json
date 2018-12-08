@@ -19,6 +19,7 @@
   "homepage": "https://github.com/gbarchard/SmashClubPR#readme",
   "dependencies": {
     "colley-rankings": "^1.0.2",
+    "discord.io": "^2.5.3",
     "node-rest-client": "^3.1.0",
     "npm": "^6.4.1"
   }
