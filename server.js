@@ -1,8 +1,10 @@
 var Discord = require('discord.io');
 var getPoll = require('./functions/get-poll.js');
+const config = require("./config.json");
+
 
 var bot = new Discord.Client({
-    token: "NTIwOTgyODg4NzA4MTc3OTIw.Du15Ww.R6BdEP-pDABePrizI82_h0jcqdE",
+    token: config.token,
     autorun: true
 });
  
