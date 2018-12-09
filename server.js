@@ -22,13 +22,32 @@ bot.on('disconnect', function(errMsg, code) {
  
 bot.on('message', function(user, userID, channelID, message, event) {
     if (user != "PR") {
-        let poll = ""
-        console.log(user)
-        if (message === "!pr") {
+        if (message.toLowerCase() === "!pr") {
+            bot.sendMessage({
+                to: channelID,
+                message: "Let me check that for you..."
+            });
+            bot.simulateTyping( channelID )
+        }
+        else if (message.toLowerCase() === "!help" || message === "!?") {
+            bot.sendMessage({
+                to: channelID,
+                message: "'!pr' will reveal the current rankings"
+            });
+        }
+        else {
+            bot.sendMessage({
+                to: channelID,
+                message: "huh?"
+            });
+        }
+    }
+    if (user != "PR") {
+        if (message.toLowerCase() === "!pr" || message.toLowerCase() === "!poll" || message.toLowerCase() === "!rankings"){
             getPoll(function(poll) {
                 bot.sendMessage({
                     to: channelID,
-                    message: poll
+                    message: "```" + poll + "```"
                 });
             })
         }
