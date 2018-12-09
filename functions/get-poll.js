@@ -16,7 +16,7 @@ var getPoll = function getPoll(callback) {
 			let scores = getColleyScores(allMatches, allParticipantsNames)
 			let poll = createPoll(allParticipantsNames, scores)
 			poll = stringifyPoll(poll)
-			return(callback(poll))
+			callback(poll)
 	}
 
 	findTournaments( function(tournaments, response) {
