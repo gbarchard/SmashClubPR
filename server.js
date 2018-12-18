@@ -1,42 +1,55 @@
-var findTournaments = require('./sources/challonge/tournaments/list-tournaments.js');
-var findTournamentMatches = require('./sources/challonge/tournaments/list-tournament-matches.js');
-var findTournamentParticipants = require('./sources/challonge/participants/list-tournaments-participants.js');
-var findAllParticipants = require('./functions/find-players-in-tournament.js');
-var getColleyScores = require('./functions/get-colley-scores.js');
-var createPoll = require('./functions/create-poll.js');
-var addNamesToMatches = require('./functions/add-names-to-matches.js');
+var Discord = require('discord.io');
+var getPoll = require('./functions/get-poll.js');
+
+const config = require("./config.json");
 
 
-function runPoll(allMatches,allParticipants) {
-    // console.log(addNamesToMatches(allMatches))
-    allMatches = addNamesToMatches(allMatches,allParticipants)
-    let allParticipantsNames = []
-    allParticipantsNames = findAllParticipants(allMatches)
-    let scores = getColleyScores(allMatches, allParticipantsNames)
-    let poll = createPoll(allParticipantsNames, scores)
+var bot = new Discord.Client({
+    token: config.token,
+    autorun: true
+});
+ 
+bot.on('ready', function() {
+    console.log('Logged in as %s - %s\n', bot.username, bot.id);
+});
 
-    console.log(poll)
-}
-findTournaments( function(tournaments, response) {
-    var allMatches = []
-    var itemsProcessed = 0
-    tournaments.forEach((tournament, index, array) => {
-        findTournamentMatches(tournament.tournament.id, function (tournament, response) {
-            allMatches = allMatches.concat(tournament)
-            itemsProcessed++
-            if (itemsProcessed === array.length) {
-                var allParticipants = []
-                var tournamentsProcessed = 0
-                tournaments.forEach((tournament, index, list) => {
-                    findTournamentParticipants(tournament.tournament.id, function (participants, response) {
-                        allParticipants = allParticipants.concat(participants)
-                        tournamentsProcessed++
-                        if (tournamentsProcessed === list.length) {
-                            runPoll(allMatches,allParticipants)
-                        }
-                    })
-                })
-            }
-        }); 
-    })
-})
+bot.on('disconnect', function(errMsg, code) {
+    console.log(errMsg)
+    console.log(code)
+
+ });
+
+ 
+bot.on('message', function(user, userID, channelID, message, event) {
+    if (user != bot.username) {
+        if (message.toLowerCase() === "!pr") {
+            bot.sendMessage({
+                to: channelID,
+                message: "Let me check that for you..."
+            });
+            bot.simulateTyping( channelID )
+        }
+        else if (message.toLowerCase() === "!help" || message === "!?") {
+            bot.sendMessage({
+                to: channelID,
+                message: "'!pr' will reveal the current rankings"
+            });
+        }
+        else if (message.charAt(0) === "!" ) {
+            bot.sendMessage({
+                to: channelID,
+                message: "Not sure what you are saying. '!help' will provide the commands I can respond to"
+            });
+        }
+    }
+    if (user != bot.username) {
+        if (message.toLowerCase() === "!pr" || message.toLowerCase() === "!poll" || message.toLowerCase() === "!rankings"){
+            getPoll(function(poll) {
+                bot.sendMessage({
+                    to: channelID,
+                    message: "```" + poll + "```"
+                });
+            })
+        }
+    }
+});
