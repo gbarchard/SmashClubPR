@@ -4,7 +4,6 @@ var prArguments = require('./functions/pr-arguments.js');
 
 const config = require("./config.json");
 
-
 var bot = new Discord.Client({
     token: config.token,
     autorun: true
@@ -19,38 +18,33 @@ bot.on('disconnect', function(errMsg, code) {
     console.log(code)
 
  });
-
- 
 bot.on('message', function(user, userID, channelID, message, event) {
     message = message.split(" ")
     if (user != bot.username) {
-        if (message[0].toLowerCase() === "!pr") {
-            bot.simulateTyping( channelID )
+        var res = ""
+        if (message[0].charAt(0) === "!"){
+            switch (message[0].toLowerCase()) {
+                case "!pr":
+                    bot.simulateTyping( channelID )
+                    break        
+                case "!help":
+                    res = "!pr = gives the current rankings\n!pr spring/fall YYYY = gives past rankings\n!youtube = gives the youtube channel\n!twitch = gives the twitch channel"
+                    break
+                case "!twitch":
+                    res = "https://www.twitch.tv/southernsmashclub"
+                    break
+                case "!youtube":
+                    res = "https://www.youtube.com/channel/UCQcDG_TKh41FAq45efq012Q"
+                    break
+                default:  
+                    res = "Command not recognized. Type !help to see a list of commands"
+            }
         }
-        else if (message[0].toLowerCase() === "!help" || message === "!?") {
-            bot.sendMessage({
-                to: channelID,
-                message: "!pr = reveals the current rankings\n!pr spring/fall YYYY = reveals past rankings"
-            });
-        }
-        else if (message[0].toLowerCase() === "!twitch") {
-            bot.sendMessage({
-                to: channelID,
-                message: "https://www.twitch.tv/southernsmashclub"
-            });
-        }
-        else if (message[0].toLowerCase() === "!youtube") {
-            bot.sendMessage({
-                to: channelID,
-                message: "https://www.youtube.com/channel/UCQcDG_TKh41FAq45efq012Q"
-            });
-        }
-        else if (message[0].charAt(0) === "!" ) {
-            bot.sendMessage({
-                to: channelID,
-                message: "Command not recognized. Type !help to see a list of commands"
-            });
-        }
+    console.log(res)
+    bot.sendMessage({
+        to: channelID,
+        message: res
+        });
     }
     if (user != bot.username) {
         if (message[0].toLowerCase() === "!pr") {
