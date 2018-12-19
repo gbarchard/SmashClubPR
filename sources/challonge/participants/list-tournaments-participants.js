@@ -2,7 +2,7 @@ var findTournamentParticipants = function findTournamentParticipants(tournamentI
     let Client = require('node-rest-client').Client; 
     let client = new Client();
     
-    const config = require("../config.json");
+    //const config = require("../config.json");
 
     var args = {
         path: {
@@ -14,7 +14,7 @@ var findTournamentParticipants = function findTournamentParticipants(tournamentI
             "format": "json"
         },
         parameters: {
-            api_key: config.api_key
+            api_key: process.env.S3_KEY.challonge_api_key
         } 
     }
 
