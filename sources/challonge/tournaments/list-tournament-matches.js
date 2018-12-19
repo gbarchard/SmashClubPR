@@ -14,7 +14,7 @@ var findTournamentMatches = function findTournamentMatches(tournamentID, callbac
             "format": "json"
         },
         parameters: {
-            api_key: process.env.S3_KEY.challonge_api_key,
+            api_key: process.env.challonge_api_key,
             state: "complete"
         } 
     }

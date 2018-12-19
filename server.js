@@ -5,7 +5,7 @@ var prArguments = require('./functions/pr-arguments.js');
 //const config = require("./config.json");
 
 var bot = new Discord.Client({
-    token: process.env.S3_KEY.discord_token,
+    token: process.env.discord_token,
     autorun: true
 });
  
