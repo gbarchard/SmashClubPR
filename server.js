@@ -33,6 +33,18 @@ bot.on('message', function(user, userID, channelID, message, event) {
                 message: "!pr = reveals the current rankings\n!pr spring/fall YYYY = reveals past rankings"
             });
         }
+        else if (message[0].toLowerCase() === "!twitch") {
+            bot.sendMessage({
+                to: channelID,
+                message: "https://www.twitch.tv/southernsmashclub"
+            });
+        }
+        else if (message[0].toLowerCase() === "!youtube") {
+            bot.sendMessage({
+                to: channelID,
+                message: "https://www.youtube.com/channel/UCQcDG_TKh41FAq45efq012Q"
+            });
+        }
         else if (message[0].charAt(0) === "!" ) {
             bot.sendMessage({
                 to: channelID,
