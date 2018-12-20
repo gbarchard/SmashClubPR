@@ -2,6 +2,8 @@ var Discord = require('discord.io');
 var getPoll = require('./functions/get-poll.js');
 var prArguments = require('./functions/pr-arguments.js');
 
+http.createServer(onRequest).listen(process.env.PORT || 6000)
+
 //const config = require("./config.json");
 
 var bot = new Discord.Client({
