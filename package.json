@@ -20,6 +20,7 @@
   "dependencies": {
     "colley-rankings": "^1.0.2",
     "discord.io": "github:izy521/discord.io",
+    "express": "^4.16.4",
     "node-rest-client": "^3.1.0",
     "npm": "^6.4.1"
   }
