@@ -2,7 +2,6 @@ var findTournaments = function findTournaments(startDate,endDate,callback) {
 	let Client = require('node-rest-client').Client; 
 	let client = new Client();
 	
-	//const config = require("../config.json");
 	var args = {
 			path: {
 					"baseURL": "https://api.challonge.com",

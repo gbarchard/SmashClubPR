@@ -2,8 +2,6 @@ var findTournamentParticipants = function findTournamentParticipants(tournamentI
     let Client = require('node-rest-client').Client; 
     let client = new Client();
     
-    //const config = require("../config.json");
-
     var args = {
         path: {
             "id": tournamentID,
