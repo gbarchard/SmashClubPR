@@ -15,8 +15,6 @@ app.get('/', function(request, response) {
     console.log('App is running, server is listening on port ', app.get('port'));
 });
 
-//const config = require("./config.json");
-
 var bot = new Discord.Client({
     token: process.env.discord_token,
     autorun: true
