@@ -1,8 +1,9 @@
+//right now the api only exists to make heroku happy.
+//if the app doesn't bind to the heroku assigned port it kills the process
 var express = require('express');
 var app     = express();
 
 var initializeAPI = function initializeAPI() {
-    //For avoiding Heroku $PORT error
     app.set('port', (process.env.PORT || 5000));
 
     app.get('/', function(request, response) {
@@ -11,7 +12,6 @@ var initializeAPI = function initializeAPI() {
     }).listen(app.get('port'), function() {
         console.log('App is running, server is listening on port ', app.get('port'));
     });
-    //End For avoiding Heroku $PORT error
 }
 
 module.exports = initializeAPI;
