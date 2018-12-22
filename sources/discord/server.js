@@ -1,6 +1,6 @@
 var Discord = require('discord.io');
-var getPoll = require('../functions/get-poll.js');
-var prArguments = require('../functions/pr-arguments.js');
+var getPoll = require('../../functions/get-poll.js');
+var prArguments = require('../../functions/pr-arguments.js');
 
 
 
