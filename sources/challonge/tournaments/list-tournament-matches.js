@@ -2,8 +2,6 @@ var findTournamentMatches = function findTournamentMatches(tournamentID, callbac
     let Client = require('node-rest-client').Client; 
     let client = new Client();
     
-    //const config = require("../config.json");
-
     var args = {
         path: {
             "id": tournamentID,
