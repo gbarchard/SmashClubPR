@@ -4,7 +4,7 @@ var getPoll = function getPoll(startDate,endDate,callback) {
 	var findTournamentMatches = require('../../../sources/challonge/tournaments/list-tournament-matches.js');
 	var findTournamentParticipants = require('../../../sources/challonge/participants/list-tournaments-participants.js');
 	var findAllParticipants = require('./find-players-in-tournament.js');
-	var getColleyScores = require('./get-poll-scores/get-colley-scores.js');
+	var getColleyScores = require('./get-colley-scores/get-colley-scores.js');
 	var formatPoll = require('./format-poll-for-display/format-poll.js')
 	var addNamesToMatches = require('./add-names-to-matches.js');
 	
