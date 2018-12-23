@@ -1,5 +1,7 @@
 var getPoll = require('../../../functions/polls/colley-matrix/get-poll.js');
 var getPollDateRange = require('./get-poll-date-range.js');
+var alignTextforPoll = require('./align-text.js');
+
 
 var getPollMessage = function getPollMessage(message, callback) {
     var dates = getPollDateRange(message)
@@ -14,7 +16,8 @@ var getPollMessage = function getPollMessage(message, callback) {
                 callback("No tournaments found")                
             }
             else {
-                callback("```" + poll + "```")
+                alignedPoll = alignTextforPoll(poll)
+                callback("```" + alignedPoll + "```")
             }                                   
         })
     }           
