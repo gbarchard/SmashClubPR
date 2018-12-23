@@ -1,8 +1,8 @@
 var getPoll = require('../../../functions/polls/colley-matrix/get-poll.js');
-var prArguments = require('../../../functions/polls/colley-matrix/pr-arguments.js');
+var getPollDateRange = require('./get-poll-date-range.js');
 
 var getPollMessage = function getPollMessage(message, callback) {
-    var dates = prArguments(message)
+    var dates = getPollDateRange(message)
     var startDate = dates[0]
     var endDate = dates[1]
     if (startDate === null) {
