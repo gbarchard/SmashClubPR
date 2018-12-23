@@ -16,7 +16,7 @@ var discordReplies = function discordReplies(bot) {
                         })
                         break        
                     case "!help":
-                        response = "**!pr** = gives the current rankings\n**!pr spring/fall YYYY** = gives past rankings\n**!youtube** = gives the youtube channel\n**!twitch** = gives the twitch channel"
+                        response = "**!pr** = the current rankings\n**!pr spring/fall YYYY** = past rankings\n**!youtube** = the youtube channel\n**!twitch** = the twitch channel\n**!bracket** = most recent bracket"
                         break
                     case "!twitch":
                         response = "https://www.twitch.tv/southernsmashclub"
@@ -25,7 +25,9 @@ var discordReplies = function discordReplies(bot) {
                         response = "https://www.youtube.com/channel/UCQcDG_TKh41FAq45efq012Q"
                         break
                     case "!bracket":
-                        response = getBracket()
+                        getBracket(function(bracket) {
+                            sendMessage(bot, channelID, bracket)
+                        })
                         break
                     default:  
                         response = "Command not recognized. Type ```!help``` to see a list of commands"
