@@ -6,7 +6,7 @@ var getPoll = function getPoll(startDate,endDate,callback) {
 	var findAllParticipants = require('./find-players-in-tournament.js');
 	var getColleyScores = require('./get-colley-scores.js');
 	var createPoll = require('./create-poll.js');
-	var stringifyPoll = require('./stringify-poll.js')
+	var formatPoll = require('./format-poll-for-display/format-poll.js')
 	var addNamesToMatches = require('./add-names-to-matches.js');
 	
 	function runPoll(allMatches,allParticipants) {
@@ -15,8 +15,8 @@ var getPoll = function getPoll(startDate,endDate,callback) {
 			allParticipantsNames = findAllParticipants(allMatches)
 			let scores = getColleyScores(allMatches, allParticipantsNames)
 			let poll = createPoll(allParticipantsNames, scores)
-			poll = stringifyPoll(poll)
-			callback(poll,false)
+			formattedPoll = formatPoll(poll)
+			callback(formattedPoll,false)
 	}
 	findTournaments(startDate,endDate,function(tournaments,response) {
 			if (tournaments.status === "500" || tournaments.length === 0) {

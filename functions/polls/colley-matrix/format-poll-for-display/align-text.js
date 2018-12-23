@@ -1,4 +1,4 @@
-var stringifyPoll = function stringifyPoll(poll) {
+var alignText = function alignText(poll) {
 	newPoll = []
 	poll.forEach(player => {
 		newPoll.push(player.join(' - '))
@@ -8,4 +8,4 @@ var stringifyPoll = function stringifyPoll(poll) {
 
 	return newPoll
 }
-module.exports = stringifyPoll;
+module.exports = alignText;
