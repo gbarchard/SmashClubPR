@@ -15,7 +15,7 @@ var discordReplies = function discordReplies(bot) {
                         })
                         break        
                     case "!help":
-                        response = "`!pr` = gives the current rankings\n`!pr spring/fall YYYY` = gives past rankings\n`!youtube` = gives the youtube channel\n`!twitch` = gives the twitch channel"
+                        response = "**!pr** = gives the current rankings\n**!pr spring/fall YYYY** = gives past rankings\n**!youtube** = gives the youtube channel\n**!twitch** = gives the twitch channel"
                         break
                     case "!twitch":
                         response = "https://www.twitch.tv/southernsmashclub"
