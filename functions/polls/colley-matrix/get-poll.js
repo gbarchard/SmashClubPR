@@ -1,13 +1,13 @@
 var getPoll = function getPoll(startDate,endDate,callback) {
 
-	var findTournaments = require('../sources/challonge/tournaments/list-tournaments.js');
-	var findTournamentMatches = require('../sources/challonge/tournaments/list-tournament-matches.js');
-	var findTournamentParticipants = require('../sources/challonge/participants/list-tournaments-participants.js');
-	var findAllParticipants = require('../functions/find-players-in-tournament.js');
-	var getColleyScores = require('../functions/get-colley-scores.js');
-	var createPoll = require('../functions/create-poll.js');
-	var stringifyPoll = require('../functions/stringify-poll.js')
-	var addNamesToMatches = require('../functions/add-names-to-matches.js');
+	var findTournaments = require('../../../sources/challonge/tournaments/list-tournaments.js');
+	var findTournamentMatches = require('../../../sources/challonge/tournaments/list-tournament-matches.js');
+	var findTournamentParticipants = require('../../../sources/challonge/participants/list-tournaments-participants.js');
+	var findAllParticipants = require('./find-players-in-tournament.js');
+	var getColleyScores = require('./get-colley-scores.js');
+	var createPoll = require('./create-poll.js');
+	var stringifyPoll = require('./stringify-poll.js')
+	var addNamesToMatches = require('./add-names-to-matches.js');
 	
 	function runPoll(allMatches,allParticipants) {
 			allMatches = addNamesToMatches(allMatches,allParticipants)

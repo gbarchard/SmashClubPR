@@ -1,5 +1,5 @@
-var getPoll = require('../../../functions/get-poll.js');
-var prArguments = require('../../../functions/pr-arguments.js');
+var getPoll = require('../../../functions/polls/colley-matrix/get-poll.js');
+var prArguments = require('../../../functions/polls/colley-matrix/pr-arguments.js');
 
 var getPollMessage = function getPollMessage(message, callback) {
     var dates = prArguments(message)
