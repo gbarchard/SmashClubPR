@@ -1,6 +1,9 @@
 var findTournaments = require('../../../../sources/challonge/tournaments/list-tournaments.js');
 var findTournamentMatches = require('../../../../sources/challonge/tournaments/list-tournament-matches.js');
 var findTournamentParticipants = require('../../../../sources/challonge/participants/list-tournaments-participants.js');
+var findAllParticipants = require('./find-players-in-tournament.js');
+var addNamesToMatches = require('./add-names-to-matches.js');
+
 
 var getDataForPoll = function getDataForPoll(startDate, endDate, callback) {
 	findTournaments(startDate,endDate,function(tournaments,response) {
@@ -22,7 +25,10 @@ var getDataForPoll = function getDataForPoll(startDate, endDate, callback) {
 													allParticipants = allParticipants.concat(participants)
 													tournamentsProcessed++
 													if (tournamentsProcessed === list.length) {
-															callback(allMatches,allParticipants)
+															allMatches = addNamesToMatches(allMatches,allParticipants)
+															let allParticipantsNames = []
+															allParticipantsNames = findAllParticipants(allMatches)
+															callback(allMatches,allParticipantsNames)
 													}
 											})
 									})
