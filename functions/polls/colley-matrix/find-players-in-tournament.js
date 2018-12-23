@@ -1,4 +1,4 @@
-var participantList = require('../sources/challonge/participants/list-tournaments-participants.js');
+var participantList = require('../../../sources/challonge/participants/list-tournaments-participants.js');
 
 var findPlayersInTournament = function findPlayersInTournament(matches) {
 	let players = []
