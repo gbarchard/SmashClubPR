@@ -1,4 +1,4 @@
-var findTournaments = function findTournaments(startDate,endDate,callback) {
+var findTournaments = function findTournaments(startDate,endDate,callback,state) {
 	let Client = require('node-rest-client').Client; 
 	let client = new Client();
 	
