@@ -1,3 +1,6 @@
+var addNamesToPoll = require('./add-names-to-poll.js');
+
+
 var getColleyScores = function getColleyScores(matches, players) {
 	let Colley = require('colley-rankings');
 
@@ -9,7 +12,9 @@ var getColleyScores = function getColleyScores(matches, players) {
 					C.addGame(winner_name, loser_name);
 			});
 
-			return (C.solve().array)
+			poll = (C.solve().array)
+
+			return addNamesToPoll(players, poll)
 	}
 
 module.exports = getColleyScores;

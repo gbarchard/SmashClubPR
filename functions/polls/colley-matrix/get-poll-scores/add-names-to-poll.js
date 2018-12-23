@@ -1,4 +1,4 @@
-var createPoll = function createPoll(players, scores) {
+var addNamesToPoll = function addNamesToPoll(players, scores) {
 	let poll = []
 	players.forEach(player => {
 			poll.push([player, scores[0]])
@@ -8,6 +8,6 @@ var createPoll = function createPoll(players, scores) {
 	return poll
 }
 
-module.exports = createPoll;
+module.exports = addNamesToPoll;
 
 
