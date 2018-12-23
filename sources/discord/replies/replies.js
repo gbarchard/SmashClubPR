@@ -1,5 +1,6 @@
 var getPollMessage = require('./get-poll-message.js')
 var sendMessage = require('./send-message.js')
+var getBracket = require('../../../functions/brackets/get-bracket')
 
 var discordReplies = function discordReplies(bot) {
     bot.on('message', function(user, userID, channelID, message, event) {
@@ -22,6 +23,9 @@ var discordReplies = function discordReplies(bot) {
                         break
                     case "!youtube":
                         response = "https://www.youtube.com/channel/UCQcDG_TKh41FAq45efq012Q"
+                        break
+                    case "!bracket":
+                        response = getBracket()
                         break
                     default:  
                         response = "Command not recognized. Type ```!help``` to see a list of commands"

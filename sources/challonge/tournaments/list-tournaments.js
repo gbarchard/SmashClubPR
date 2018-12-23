@@ -1,4 +1,4 @@
-var findTournaments = function findTournaments(startDate,endDate,callback) {
+var findTournaments = function findTournaments(startDate,endDate,callback,state) {
 	let Client = require('node-rest-client').Client; 
 	let client = new Client();
 	
@@ -13,6 +13,7 @@ var findTournaments = function findTournaments(startDate,endDate,callback) {
 					api_key: process.env.challonge_api_key,
 					created_before: endDate,
 					created_after: startDate,
+					state: state || "all"
 			} 
 	}
 
