@@ -10,13 +10,7 @@ var sortText = function sortText(poll) {
 		}
 	}	
 	sortedPoll = poll.sort(compareSecondColumn);
-	let rankings = []
-	sortedPoll.forEach((record, index) => {
-		record.unshift(index+1);
-		let value = parseFloat(record[2]).toFixed(3)
-		record[2] = value
-		rankings.push(record)
-	});
-	return rankings
+
+	return sortedPoll
 }
 module.exports = sortText;
