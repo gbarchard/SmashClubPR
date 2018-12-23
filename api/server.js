@@ -1,5 +1,5 @@
 //right now the api only exists to make heroku happy.
-//if the app doesn't bind to the heroku assigned port it kills the process
+//if the app doesn't bind to the heroku assigned port then heroku kills the process
 var express = require('express');
 var app     = express();
 
