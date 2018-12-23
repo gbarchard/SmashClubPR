@@ -1,4 +1,4 @@
-var prArguments = function prArguments(message) {
+var getPollDateRange = function getPollDateRange(message) {
     
     function error() {
         startDate = null
@@ -41,4 +41,4 @@ var prArguments = function prArguments(message) {
     dates = [startDate,endDate]
     return dates
 }
-module.exports = prArguments
+module.exports = getPollDateRange
