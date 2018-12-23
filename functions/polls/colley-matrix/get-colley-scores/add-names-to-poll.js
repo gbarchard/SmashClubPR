@@ -9,5 +9,3 @@ var addNamesToPoll = function addNamesToPoll(players, scores) {
 }
 
 module.exports = addNamesToPoll;
-
-
