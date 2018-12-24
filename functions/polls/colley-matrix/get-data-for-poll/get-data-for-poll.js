@@ -7,8 +7,10 @@ var addNamesToMatches = require('./add-names-to-matches.js');
 
 var getDataForPoll = function getDataForPoll(startDate, endDate, callback) {
 	findTournaments(startDate,endDate,function(tournaments,response) {
+		console.log("******")
+		console.log(tournaments.length)
 		if (tournaments.status === "500" || tournaments.length === 0) {
-			callback("",true)
+			callback([],[],true)
 		}
 		else {
 			var allMatches = []
