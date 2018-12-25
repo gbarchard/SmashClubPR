@@ -18,13 +18,19 @@ var discordReplies = function discordReplies(bot) {
                         })
                         break        
                     case "!help":
-                        response = "**!pr** = the current rankings\n**!pr spring/fall YYYY** = past rankings\n**!youtube** = the youtube channel\n**!twitch** = the twitch channel\n**!bracket** = most recent bracket\n**!signup** = signup link"
+                        response = "**!pr** = current rankings\n**!pr spring/fall YYYY** = past rankings\n**!youtube** = youtube channel\n**!twitch** = twitch channel\n**!bracket** = most recent bracket\n**!signup** = signup link\n**!rules** = tournament rules\n**!schedule** = semester schedule"
                         break
                     case "!twitch":
                         response = "https://www.twitch.tv/southernsmashclub"
                         break
                     case "!youtube":
                         response = "https://www.youtube.com/channel/UCQcDG_TKh41FAq45efq012Q"
+                        break
+                    case "!rules":
+                        response = "https://docs.google.com/document/d/1iZF_DF0UliM8L6OchkxxVScSaSPdkcDNIh-qcpkUGr4/edit?usp=sharing"
+                        break
+                    case "!schedule":
+                        response = "https://docs.google.com/spreadsheets/d/1eli7zbbsUCi2ZJidXe_qu1IehJgF1p0w8mZhi9uwWPY/edit?usp=sharing"
                         break
                     case "!bracket":
                         getBracket(function(bracket) {
@@ -37,7 +43,7 @@ var discordReplies = function discordReplies(bot) {
                         })
                         break
                     default:  
-                        response = "Command not recognized. Type ```!help``` to see a list of commands"
+                        response = "Command not recognized. Type **!help** to see a list of commands"
                 }
             }
         sendMessage(bot, channelID, response)
