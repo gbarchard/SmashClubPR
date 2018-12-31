@@ -5,10 +5,15 @@ var getDataForPoll = require('./get-data-for-poll/get-data-for-poll.js')
 var getPoll = function getPoll(startDate,endDate,callback) {
 
 	getDataForPoll(startDate,endDate,
-		function (allMatches,allParticipantsNames){
-			let scores = getColleyScores(allMatches, allParticipantsNames)
-			formattedPoll = formatPoll(scores)
-			callback(formattedPoll,false)
+		function (allMatches,allParticipantsNames,error){
+			if (error === true) {
+				callback("",true)
+			}
+			else {
+				let scores = getColleyScores(allMatches, allParticipantsNames)
+				formattedPoll = formatPoll(scores)
+				callback(formattedPoll,false)
+			}
 		})
 }
 
