@@ -10,12 +10,17 @@ var getStatsMessage = function getStatsMessage(message, callback) {
     }
     else {
         getStats(message[1],startDate,endDate,function(stats,error) {
+            console.log("got here")
             if (error === true) {
-                callback("No stats found")                
+                callback("No stats found")    
             }
             else {
-                console.log(stats)
-                callback(stats.name + " is ranked " + stats.rank)
+                callback("**" + stats.name + "**" +
+                "\nRank: " + stats.rank +
+                "\nWins: " + stats.wins + 
+                "\nLosses: " + stats.losses +
+                "\nPercent: " + stats.percent +"%"
+                )
             }                                   
         })
     }           

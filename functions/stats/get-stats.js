@@ -1,18 +1,26 @@
-var getPoll = require('../polls/colley-matrix/get-poll')
-var getPollDateRange = require('../../sources/discord/replies/get-poll-date-range');
+var getRank = require('./get-rank')
+var getWinPercent = require('./get-win-percent')
 
 var getStats = function getStats(name,startDate,endDate,callback) {
-    
-    getPoll(startDate,endDate,function(poll,error){
-        poll.forEach(player => {
-            if (name === player[1]) {
-                var stats = {
-                    "name": name,
-                    "rank": player[0]
-                }
-                callback(stats)
+    console.log("got stats")
+    getRank(name,startDate,endDate,function(rank){
+        console.log("got rank")
+        if(rank === undefined) {
+            callback({},true)
+        }
+        else {
+            stats = {
+                "name": name,
+                "rank": rank
             }
-        });
-    }) 
+            getWinPercent(name,startDate,endDate,function(wins,losses,percent){
+                console.log("got win percent")
+                stats.wins = wins
+                stats.losses = losses
+                stats.percent = percent
+                callback(stats,false)
+            })
+        }
+    })
 }
 module.exports = getStats
