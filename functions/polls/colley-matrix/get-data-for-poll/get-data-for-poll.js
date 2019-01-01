@@ -1,4 +1,4 @@
-var findTournaments = require('../../../../sources/challonge/tournaments/list-tournaments.js');
+var findTournaments = require('../../../../sources/challonge/functions/list-tournaments-by-start-date.js');
 var findTournamentMatches = require('../../../../sources/challonge/tournaments/list-tournament-matches.js');
 var findTournamentParticipants = require('../../../../sources/challonge/participants/list-tournaments-participants.js');
 var findAllParticipants = require('./find-players-in-tournament.js');
@@ -7,8 +7,6 @@ var addNamesToMatches = require('./add-names-to-matches.js');
 
 var getDataForPoll = function getDataForPoll(startDate, endDate, callback) {
 	findTournaments(startDate,endDate,function(tournaments,response) {
-		console.log("******")
-		console.log(tournaments.length)
 		if (tournaments.status === "500" || tournaments.length === 0) {
 			callback([],[],true)
 		}

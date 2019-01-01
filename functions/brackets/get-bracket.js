@@ -5,7 +5,6 @@ var getBracket = function getBracket(callback) {
         var x = 0
         tournaments.reverse()
         tournaments.forEach(tournament => {
-            console.log(tournament.tournament.state)
             if ((tournament.tournament.state === "underway" && x === 0) || (tournament.tournament.state === "awaiting_review" && x === 0)) {
                 callback(tournament.tournament.full_challonge_url)
                 x = x + 1

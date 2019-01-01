@@ -3,7 +3,6 @@ var addNamesToPoll = require('./add-names-to-poll.js');
 var getColleyScores = function getColleyScores(matches, players) {
 	let Colley = require('colley-rankings');
 
-	console.log(players)
 	let C = Colley(players.length); // Create a n-person league
 			
 			matches.forEach(match => {
