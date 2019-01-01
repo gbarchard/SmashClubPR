@@ -5,9 +5,11 @@ var findTournamentsByStartDate = function findTournamentsByStartDate(startDate,e
     findTournaments("2000-01-01","2100-01-01",function(tournaments,response) {
         var filteredTournaments = []
         tournaments.forEach(tournament => {
-            var tournamentStartedAt = tournament.tournament.started_at.substring(0,10)
-            if (tournamentStartedAt >= startDate && tournamentStartedAt <= endDate) {
-                filteredTournaments.push(tournament)
+            if (tournament.tournament.started_at != null) {
+                var tournamentStartedAt = tournament.tournament.started_at.substring(0,10)
+                if (tournamentStartedAt >= startDate && tournamentStartedAt <= endDate) {
+                    filteredTournaments.push(tournament)
+                }
             }
         });
         callback(filteredTournaments,response)    
