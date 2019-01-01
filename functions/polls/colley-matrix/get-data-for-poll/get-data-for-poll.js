@@ -1,4 +1,4 @@
-var findTournaments = require('../../../../sources/challonge/tournaments/list-tournaments.js');
+var findTournaments = require('../../../../sources/challonge/functions/list-tournaments-by-start-date.js');
 var findTournamentMatches = require('../../../../sources/challonge/tournaments/list-tournament-matches.js');
 var findTournamentParticipants = require('../../../../sources/challonge/participants/list-tournaments-participants.js');
 var findAllParticipants = require('./find-players-in-tournament.js');
