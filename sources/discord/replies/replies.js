@@ -2,7 +2,7 @@ var getPollMessage = require('./get-poll-message.js')
 var sendMessage = require('./send-message.js')
 var getBracket = require('../../../functions/brackets/get-bracket')
 var getSignup = require('../../../functions/signup/get-signup')
-
+var getStatsMessage = require('./get-stats-message')
 
 var discordReplies = function discordReplies(bot) {
     bot.on('message', function(user, userID, channelID, message, event) {
@@ -38,8 +38,13 @@ var discordReplies = function discordReplies(bot) {
                         })
                         break
                     case "!signup":
-                        getSignup(function(bracket) {
-                            sendMessage(bot, channelID, bracket)
+                        getSignup(function(signup) {
+                            sendMessage(bot, channelID, signup)
+                        })
+                        break
+                    case "!stats":
+                        getStatsMessage(message,function(stats) {
+                            sendMessage(bot, channelID, stats)
                         })
                         break
                     default:  
