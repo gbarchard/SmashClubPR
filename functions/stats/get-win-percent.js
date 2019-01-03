@@ -14,7 +14,7 @@ var getWinPercent = function getWinPercent(name,startDate,endDate,callback) {
             }
         });
         if (wins + losses != 0){
-            percent = (wins / (wins + losses))*100
+            percent = Math.round((wins / (wins + losses))*100)
         }
         callback(wins,losses,percent)
     })

@@ -1,10 +1,9 @@
 var getRank = require('./get-rank')
 var getWinPercent = require('./get-win-percent')
+var getPlacing = require('./get-placing')
 
 var getStats = function getStats(name,startDate,endDate,callback) {
-    console.log("got stats")
     getRank(name,startDate,endDate,function(rank){
-        console.log("got rank")
         if(rank === undefined) {
             callback({},true)
         }
@@ -14,11 +13,17 @@ var getStats = function getStats(name,startDate,endDate,callback) {
                 "rank": rank
             }
             getWinPercent(name,startDate,endDate,function(wins,losses,percent){
-                console.log("got win percent")
                 stats.wins = wins
                 stats.losses = losses
                 stats.percent = percent
-                callback(stats,false)
+            
+                getPlacing(name,startDate,endDate,function(avgFinish,tournamentsWon,bestFinish){
+                    stats.avgFinish = avgFinish
+                    stats.tournamentsWon = tournamentsWon
+                    stats.bestFinish = bestFinish
+                    console.log(stats.bestFinish)
+                    callback(stats,false)
+                })
             })
         }
     })

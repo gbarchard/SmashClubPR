@@ -28,7 +28,8 @@ var getDataForPoll = function getDataForPoll(startDate, endDate, callback) {
 									allMatches = addNamesToMatches(allMatches,allParticipants)
 									let allParticipantsNames = []
 									allParticipantsNames = findAllParticipants(allMatches)
-									callback(allMatches,allParticipantsNames)
+									// console.log(allParticipants)
+									callback(allMatches,allParticipantsNames,false,allParticipants)
 								}
 							})
 						})
