@@ -7,19 +7,21 @@ var getPlacing = function getPlacing(name,startDate,endDate,callback) {
     var bestFinish = 1000
     getDataForPoll(startDate,endDate,function(allMatches,allParticipantsNames,error,allParticipants){
         allParticipants.forEach(participant => {
-            if (name === participant.participant.name || name === participant.participant.challonge_username) {
+            if ((name === participant.participant.name || name === participant.participant.challonge_username) && participant.participant.final_rank != null) {
                 tournamentsAttended++
                 totalFinish = totalFinish + participant.participant.final_rank
                 if (participant.participant.final_rank === 1) {
                     tournamentsWon++
                 }
-                if (participant.participant.final_rank << bestFinish){
+                if (participant.participant.final_rank < bestFinish){
                     bestFinish = participant.participant.final_rank
                 }
+                console.log(bestFinish)
+                console.log(participant.participant.final_rank)
+                console.log("********")
             }
         });
         var avgFinish = totalFinish / tournamentsAttended
-        console.log(tournamentsWon)
         callback(avgFinish,tournamentsWon,bestFinish)
     })
 }

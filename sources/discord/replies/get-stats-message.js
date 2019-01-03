@@ -18,8 +18,8 @@ var getStatsMessage = function getStatsMessage(message, callback) {
                 callback("**" + stats.name + "**" +
                 "\nRank: " + stats.rank +
                 "\nRecord: " + stats.wins + " -- " + stats.losses + "     " + stats.percent + "%" +
-                "\nAvg Finish: " + ordinal(Math.round(stats.avgFinish)) +
                 "\nTournaments Won: " + stats.tournamentsWon +
+                "\nAvg Finish: " + ordinal(Math.round(stats.avgFinish)) +
                 "\nBest Finish: " + ordinal(stats.bestFinish)
                 )
             }                                   

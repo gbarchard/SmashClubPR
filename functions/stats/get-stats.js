@@ -21,7 +21,6 @@ var getStats = function getStats(name,startDate,endDate,callback) {
                     stats.avgFinish = avgFinish
                     stats.tournamentsWon = tournamentsWon
                     stats.bestFinish = bestFinish
-                    console.log(stats.bestFinish)
                     callback(stats,false)
                 })
             })
