@@ -8,9 +8,9 @@ var alignText = function alignText(poll) {
 	})
 
 	poll.forEach(player => {
-		player[0] = ' '.repeat(3-player[0].toString().length) + player[0];
+		player[0] = ' '.repeat(2-player[0].toString().length) + player[0];
 		player[1] = player[1] + ' '.repeat(maxLengthOfName-player[1].toString().length);
-		newPoll.push(player.join(' - '))
+		newPoll.push(player.join('-'))
 	});
 	newPoll = newPoll.join('\n')
 
