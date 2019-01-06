@@ -16,13 +16,10 @@ var getPlacing = function getPlacing(name,startDate,endDate,callback) {
                 if (participant.participant.final_rank < bestFinish){
                     bestFinish = participant.participant.final_rank
                 }
-                console.log(bestFinish)
-                console.log(participant.participant.final_rank)
-                console.log("********")
             }
         });
         var avgFinish = totalFinish / tournamentsAttended
-        callback(avgFinish,tournamentsWon,bestFinish)
+        callback(avgFinish,tournamentsWon,bestFinish,tournamentsAttended)
     })
 }
 module.exports = getPlacing

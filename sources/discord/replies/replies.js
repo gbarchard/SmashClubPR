@@ -18,7 +18,22 @@ var discordReplies = function discordReplies(bot) {
                         })
                         break        
                     case "!help":
-                        response = "**!pr** = current rankings\n**!pr spring/fall YYYY** = past rankings\n**!youtube** = youtube channel\n**!twitch** = twitch channel\n**!bracket** = most recent bracket\n**!signup** = signup link\n**!rules** = tournament rules\n**!schedule** = semester schedule"
+                        response =  "```md\nResources" +
+                                    "\n=========" +
+                                    "\n!youtube = youtube channel" +
+                                    "\n!twitch = twitch channel" +
+                                    "\n!schedule = semester schedule" +
+                                    "\n!rules = tournament rules" +
+                                    "\n\nTournaments" +
+                                    "\n===========" +
+                                    "\n!signup = signup link" +
+                                    "\n!bracket = most recent bracket" +
+                                    "\n!volunteer = sign up to bring setups" +
+                                    "\n\nStatistics" +
+                                    "\n==========" +
+                                    "\n(required) [optional]" +
+                                    "\n\n(!pr) [spring/fall] [YYYY] \n= rankings" +
+                                    "\n\n(!stats) (challonge_username) [spring/fall] [YYYY] \n= stats on a player```"              
                         break
                     case "!twitch":
                         response = "https://www.twitch.tv/southernsmashclub"
@@ -31,6 +46,9 @@ var discordReplies = function discordReplies(bot) {
                         break
                     case "!schedule":
                         response = "https://docs.google.com/spreadsheets/d/1eli7zbbsUCi2ZJidXe_qu1IehJgF1p0w8mZhi9uwWPY/edit?usp=sharing"
+                        break
+                    case "!volunteer":
+                        response = "https://docs.google.com/spreadsheets/d/1P14-3Igzna7Ek-eWK38uixO6nsaL7keB-2BCTaCiNGI/edit?usp=sharing"
                         break
                     case "!bracket":
                         getBracket(function(bracket) {
