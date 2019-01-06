@@ -14,26 +14,26 @@ var getDataForPoll = function getDataForPoll(startDate, endDate, callback) {
 			var allMatches = []
 			var itemsProcessed = 0
 			tournaments.forEach((tournament, index, array) => {
-					findTournamentMatches(tournament.tournament.id, function (tournament, response) {
-							allMatches = allMatches.concat(tournament)
-							itemsProcessed++
-							if (itemsProcessed === array.length) {
-									var allParticipants = []
-									var tournamentsProcessed = 0
-									tournaments.forEach((tournament, index, list) => {
-											findTournamentParticipants(tournament.tournament.id, function (participants, response) {
-													allParticipants = allParticipants.concat(participants)
-													tournamentsProcessed++
-													if (tournamentsProcessed === list.length) {
-															allMatches = addNamesToMatches(allMatches,allParticipants)
-															let allParticipantsNames = []
-															allParticipantsNames = findAllParticipants(allMatches)
-															callback(allMatches,allParticipantsNames)
-													}
-											})
-									})
-							}
-					}); 
+				findTournamentMatches(tournament.tournament.id, function (tournament, response) {
+					allMatches = allMatches.concat(tournament)
+					itemsProcessed++
+					if (itemsProcessed === array.length) {
+						var allParticipants = []
+						var tournamentsProcessed = 0
+						tournaments.forEach((tournament, index, list) => {
+							findTournamentParticipants(tournament.tournament.id, function (participants, response) {
+								allParticipants = allParticipants.concat(participants)
+								tournamentsProcessed++
+								if (tournamentsProcessed === list.length) {
+									allMatches = addNamesToMatches(allMatches,allParticipants)
+									let allParticipantsNames = []
+									allParticipantsNames = findAllParticipants(allMatches)
+									callback(allMatches,allParticipantsNames,false,allParticipants)
+								}
+							})
+						})
+					}
+				}); 
 			})
 		}
 })
