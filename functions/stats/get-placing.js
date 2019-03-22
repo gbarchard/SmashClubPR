@@ -24,13 +24,9 @@ var getPlacing = function getPlacing(name,allMatches,allParticipantsNames,allPar
 
     allMatches.forEach(match => {
         if (lowerCase(match.match.winner_name) === name) {
-            console.log(match.match.loser_name)
             poll.forEach(row => {
                 if (match.match.loser_name === row[1]){
-                    console.log(row[0])
-                    console.log(bestWinPlace)
                     if (bestWinPlace > row[0]){
-                        console.log("got here")
                         bestWinPlace = row[0]
                         bestWinName = match.match.loser_name
                     }
