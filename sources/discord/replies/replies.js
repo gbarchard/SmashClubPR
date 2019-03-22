@@ -36,6 +36,14 @@ var discordReplies = function discordReplies(bot) {
                                     "\n\n(!pr) [spring/fall] [YYYY] \n= rankings" +
                                     "\n\n(!stats) (challonge_username) [spring/fall] [YYYY] \n= stats on a player```"              
                         break
+                    case "!version":
+                        response =  "```Version 1.1.0" +
+                                    "\n\n-!stages has been added" +
+                                    "\n-!pr response has new format" +
+                                    "\n-!stats is no longer case sensitive" +
+                                    "\n-!stats presents proper format if name is not found" +
+                                    "\n-!stats now has Best Win```"
+                        break
                     case "!twitch":
                         response = "https://www.twitch.tv/southernsmashclub"
                         break
