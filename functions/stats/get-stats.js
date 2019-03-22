@@ -7,7 +7,7 @@ var getStats = function getStats(name,startDate,endDate,stats, callback) {
     
     name = lowerCase(name)
    
-    getRank(name,startDate,endDate,function(rank,username){
+    getRank(name,startDate,endDate,function(rank,username,poll){
         if(rank === undefined) {
             callback({},true)
         }
@@ -19,11 +19,13 @@ var getStats = function getStats(name,startDate,endDate,stats, callback) {
                 stats.losses = losses
                 stats.percent = percent
             
-                getPlacing(name,startDate,endDate,function(avgFinish,tournamentsWon,bestFinish,tournamentsAttended){
+                getPlacing(name,startDate,endDate,poll,function(avgFinish,tournamentsWon,bestFinish,tournamentsAttended,bestWinPlace,bestWinName){
                     stats.avgFinish = avgFinish
                     stats.tournamentsWon = tournamentsWon
                     stats.bestFinish = bestFinish
                     stats.tournamentsAttended = tournamentsAttended
+                    stats.bestWinName = bestWinName
+                    stats.bestWinPlace = bestWinPlace
                     callback(stats,false)
                 })
             })

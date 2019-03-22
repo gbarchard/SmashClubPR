@@ -22,7 +22,8 @@ var getStatsMessage = function getStatsMessage(message, callback) {
                 "\nTournaments Attended: " + stats.tournamentsAttended +
                 "\nTournaments Won: " + stats.tournamentsWon +
                 "\nAvg Finish: " + ordinal(Math.round(stats.avgFinish)) +
-                "\nBest Finish: " + ordinal(stats.bestFinish)
+                "\nBest Finish: " + ordinal(stats.bestFinish) +
+                "\nBest Win: **" + stats.bestWinName + "** who is ranked " + ordinal(stats.bestWinPlace)
                 )
             }                                   
         })
