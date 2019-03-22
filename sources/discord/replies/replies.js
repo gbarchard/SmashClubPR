@@ -24,6 +24,7 @@ var discordReplies = function discordReplies(bot) {
                                     "\n!twitch = twitch channel" +
                                     "\n!schedule = semester schedule" +
                                     "\n!rules = tournament rules" +
+                                    "\n!stages = tournament legal stages" +
                                     "\n\nTournaments" +
                                     "\n===========" +
                                     "\n!signup = signup link" +
@@ -43,6 +44,9 @@ var discordReplies = function discordReplies(bot) {
                         break
                     case "!rules":
                         response = "https://docs.google.com/document/d/1iZF_DF0UliM8L6OchkxxVScSaSPdkcDNIh-qcpkUGr4/edit?usp=sharing"
+                        break
+                    case "!stages":
+                        response = "https://bans.page/index.html#1-3-40h-44h-85h_33h-37h-19h-79hnVGhlIEJpcmQgSG91c2U="
                         break
                     case "!schedule":
                         response = "https://docs.google.com/spreadsheets/d/1eli7zbbsUCi2ZJidXe_qu1IehJgF1p0w8mZhi9uwWPY/edit?usp=sharing"

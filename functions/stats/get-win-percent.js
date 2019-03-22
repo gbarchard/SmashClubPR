@@ -1,4 +1,5 @@
 var getDataForPoll = require('../polls/colley-matrix/get-data-for-poll/get-data-for-poll')
+var lowerCase = require('./to-lower-case')
 
 var getWinPercent = function getWinPercent(name,startDate,endDate,callback) {
     var wins = 0
@@ -6,10 +7,10 @@ var getWinPercent = function getWinPercent(name,startDate,endDate,callback) {
     var percent = 0
     getDataForPoll(startDate,endDate,function(allMatches,allParticipantNames){
         allMatches.forEach(match => {
-            if(name === match.match.winner_name){
+            if(name === lowerCase(match.match.winner_name)){
                 wins++
             }
-            else if (name === match.match.loser_name){
+            else if (name === lowerCase(match.match.loser_name)){
                 losses++
             }
         });
