@@ -16,7 +16,7 @@ var getRank = function getRank(name,startDate,endDate,callback) {
                 }
             });
             if(rank != 0){
-                callback(rank,username)
+                callback(rank,username,poll)
             }
             else
                 callback()
