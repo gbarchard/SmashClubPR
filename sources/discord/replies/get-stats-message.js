@@ -13,7 +13,7 @@ var getStatsMessage = function getStatsMessage(message, callback) {
     else {
         getStats(message[1],startDate,endDate,stats,function(stats,error) {
             if (error === true) {
-                callback("No stats found")    
+                callback("No stats found\n!stats <challonge username>")    
             }
             else {
                 callback("**" + stats.name + "**" +

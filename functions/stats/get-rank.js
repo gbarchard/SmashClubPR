@@ -1,4 +1,5 @@
 var getPoll = require('../polls/colley-matrix/get-poll')
+var lowerCase = require('./to-lower-case')
 
 var getRank = function getRank(name,startDate,endDate,callback) {
     var rank = 0
@@ -7,13 +8,15 @@ var getRank = function getRank(name,startDate,endDate,callback) {
             callback()
         }
         else {
+            username = ""
             poll.forEach(player => {
-                if (name === player[1]) {
+                if (name === lowerCase(player[1])) {
                     rank = player[0]
+                    username = player[1]
                 }
             });
             if(rank != 0){
-                callback(rank)
+                callback(rank,username)
             }
             else
                 callback()

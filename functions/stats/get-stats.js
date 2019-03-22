@@ -1,15 +1,19 @@
 var getRank = require('./get-rank')
 var getWinPercent = require('./get-win-percent')
 var getPlacing = require('./get-placing')
+var lowerCase = require('./to-lower-case')
 
 var getStats = function getStats(name,startDate,endDate,stats, callback) {
-    getRank(name,startDate,endDate,function(rank){
+    
+    name = lowerCase(name)
+   
+    getRank(name,startDate,endDate,function(rank,username){
         if(rank === undefined) {
             callback({},true)
         }
         else {
-            stats.name = name
             stats.rank = rank
+            stats.name = username
             getWinPercent(name,startDate,endDate,function(wins,losses,percent){
                 stats.wins = wins
                 stats.losses = losses
