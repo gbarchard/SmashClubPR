@@ -17,6 +17,7 @@ var getStatsMessage = function getStatsMessage(message, callback) {
             }
             else {
                 callback("**" + stats.name + "**" +
+                "\n****" +
                 "\nRank: " + stats.rank +
                 "\nRecord: " + stats.wins + " -- " + stats.losses + "     " + stats.percent + "%" +
                 "\nTournaments Attended: " + stats.tournamentsAttended +
