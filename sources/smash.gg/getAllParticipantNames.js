@@ -1,7 +1,6 @@
 var getAllParticipantNames = function getAllParticipantNames(data) {
     
     let players = []
-
     data.tournaments.nodes.forEach(tournament => {
         tournament.events.forEach(result => {
             result.standings.nodes.forEach(standing => {

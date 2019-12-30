@@ -9,9 +9,9 @@ var getAllMatches = function getAllMatches(data,participants) {
             tournamentCount++
             result.sets.nodes.forEach(set => {
                 setCount++
-                console.log(tournamentCount + " " + setCount)
                 var winner_name = ""
                 var loser_name = ""
+                if(set.displayScore != "DQ") {
                 if (set.slots[0].entrant.id === set.winnerId) {
                     participants.forEach(participant => {
                         if(participant.participant.id == set.slots[0].entrant.id) {
@@ -40,15 +40,19 @@ var getAllMatches = function getAllMatches(data,participants) {
                         if(participant.participant.id === set.slots[1].entrant.id) {
                             loser_name = participant.participant.name
                         }
-                    })                }
-                matches.push(
-                    {
-                    "match": {
-                        "winner_name": winner_name,
-                        "loser_name": loser_name
+                    })
+                }
+                console.log("winner " + winner_name + " loser " + loser_name)                }
+                if(winner_name != "" && loser_name != "") {
+                    matches.push(
+                        {
+                        "match": {
+                            "winner_name": winner_name,
+                            "loser_name": loser_name
+                            }
                         }
-                    }
-                )
+                    )
+                }
             })
         })
     });
