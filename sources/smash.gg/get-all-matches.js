@@ -1,3 +1,5 @@
+var lowerCase = require('../../functions/stats/to-lower-case')
+
 var getAllMatches = function getAllMatches(data,participants) {
     
     let matches = []
@@ -12,6 +14,7 @@ var getAllMatches = function getAllMatches(data,participants) {
                 var winner_name = ""
                 var loser_name = ""
                 if(set.displayScore != "DQ") {
+ 
                 if (set.slots[0].entrant.id === set.winnerId) {
                     participants.forEach(participant => {
                         if(participant.participant.id == set.slots[0].entrant.id) {
@@ -46,8 +49,8 @@ var getAllMatches = function getAllMatches(data,participants) {
                     matches.push(
                         {
                         "match": {
-                            "winner_name": winner_name,
-                            "loser_name": loser_name
+                            "winner_name": lowerCase(winner_name),
+                            "loser_name": lowerCase(loser_name)
                             }
                         }
                     )
