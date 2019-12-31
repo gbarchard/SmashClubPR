@@ -10,11 +10,17 @@ Date.time = function() { return Date.now().getUnixTime(); }
 var getDataForPoll = function getDataForPoll(startDate, endDate, callback) {
 	startDate = new Date(startDate).getUnixTime();
 	endDate = new Date(endDate).getUnixTime();
-	getSmashData(startDate, endDate, function(data) {
-		allParticipantsNames = getAllParticipantNames(data)
-		allParticipants = getAllParticipants(data)
-		allMatches = getAllMatches(data,allParticipants)
-		callback(allMatches,allParticipantsNames,false,allParticipants)
+	getSmashData(startDate, endDate, function(data, error) {
+		if (error) {
+			callback({},{},true,{})
+		}
+		else {
+			allParticipantsNames = getAllParticipantNames(data)
+			allParticipants = getAllParticipants(data)
+			allMatches = getAllMatches(data,allParticipants)
+			callback(allMatches,allParticipantsNames,false,allParticipants)
+		}
+		
 	})
 }
 

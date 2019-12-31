@@ -2,23 +2,17 @@ var addNamesToPoll = require('./add-names-to-poll.js');
 var min3Tournaments = require('../format-poll-for-display/min-3-tournaments')
 
 var getColleyScores = function getColleyScores(matches, players) {
-	console.log(matches)
-	console.log(players)
 	let Colley = require('colley-rankings');
 	var justPlayers = []
 	players.forEach(player => {
 		justPlayers.push(player[0])
 	})
-	// console.log(justPlayers)
 
 	let C = Colley(justPlayers.length); // Create a n-person league
 			
 		matches.forEach(match => {
-				console.log(match)
 				winner_name = justPlayers.indexOf(match.match.winner_name)
 				loser_name= justPlayers.indexOf(match.match.loser_name)
-				console.log('winner: ' + winner_name)
-				console.log('loser:' + loser_name)
 				C.addGame(winner_name, loser_name);
 		});
 
