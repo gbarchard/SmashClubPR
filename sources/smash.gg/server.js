@@ -1,5 +1,5 @@
-var getTournamentIds = require('./get-tournament-ids')
-var getResultsInMatches = require('./get-results-in-matches')
+var getTournamentIds = require('./queries/get-tournament-ids')
+var getResultsInMatches = require('./queries/get-results-in-matches')
 
 var getSmashData = function getSmashData(startDate, endDate, callback) {
     
