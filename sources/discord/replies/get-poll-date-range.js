@@ -24,7 +24,7 @@ var getPollDateRange = function getPollDateRange(season,year) {
         }
         
     }
-    else if (season === undefined) {
+    else {
         var today = new Date()
         if (today.getMonth() < 7){
             var startDate = today.getFullYear() + "-01-01"
@@ -35,9 +35,6 @@ var getPollDateRange = function getPollDateRange(season,year) {
             var endDate = today.getFullYear() + "-12-31"
         }
     }
-    else {
-        error()
-    } 
     dates = [startDate,endDate]
     return dates
 }

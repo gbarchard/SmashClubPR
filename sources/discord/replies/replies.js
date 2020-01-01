@@ -29,7 +29,6 @@ var discordReplies = function discordReplies(bot) {
                                     "\n===========" +
                                     "\n!signup = signup link" +
                                     "\n!bracket = most recent bracket" +
-                                    "\n!volunteer = sign up to bring setups" +
                                     "\n\nStatistics" +
                                     "\n==========" +
                                     "\n(required) [optional]" +
@@ -37,12 +36,10 @@ var discordReplies = function discordReplies(bot) {
                                     "\n\n(!stats) (smash.gg_username) [spring/fall] [YYYY] \n= stats on a player```"              
                         break
                     case "!version":
-                        response =  "```Version 1.1.0" +
-                                    "\n\n-!stages has been added" +
-                                    "\n-!pr response has new format" +
-                                    "\n-!stats is no longer case sensitive" +
-                                    "\n-!stats presents proper format if name is not found" +
-                                    "\n-!stats now has Best Win```"
+                        response =  "```Version 2.0.0" +
+                                    "\n\n-Now works with smash.gg" +
+                                    "\n-Now requires 3 tournaments to be in pr" +
+                                    "\n-Now requires 3 tournaments to have !stats displayed```"
                         break
                     case "!twitch":
                         response = "https://www.twitch.tv/southernsmashclub"
@@ -58,9 +55,6 @@ var discordReplies = function discordReplies(bot) {
                         break
                     case "!schedule":
                         response = "https://docs.google.com/spreadsheets/d/1hFVfwJ_26Z6aSyaYIWL9ccus_oXrABMyW8NMDCLw_yE/edit?usp=sharing"
-                        break
-                    case "!volunteer":
-                        response = "https://docs.google.com/spreadsheets/d/1P14-3Igzna7Ek-eWK38uixO6nsaL7keB-2BCTaCiNGI/edit?usp=sharing"
                         break
                     case "!bracket":
                         response = "https://smash.gg/thebirdhouse"

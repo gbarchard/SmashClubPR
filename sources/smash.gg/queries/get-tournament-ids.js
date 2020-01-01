@@ -5,9 +5,8 @@ const getTournamentIds = function getTournamentIds(startDate, endDate, callback)
     const variables = {
         afterDate: startDate,
         beforeDate: endDate,
-        id: 183103
     }
-    
+
     const query = `query TournamentQuery($afterDate: Timestamp, $beforeDate: Timestamp) {
         tournaments(query: {
                 filter: {
@@ -17,9 +16,7 @@ const getTournamentIds = function getTournamentIds(startDate, endDate, callback)
                 }
             }){
         nodes {
-                id
-                url(relative: false)
-                startAt      
+                id   
             }
         }
         }`

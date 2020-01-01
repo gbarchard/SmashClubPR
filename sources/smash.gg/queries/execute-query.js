@@ -5,10 +5,9 @@ var executeQuery = function executeQuery(variables, query, callback) {
     
     const client = new GraphQLClient('https://api.smash.gg/gql/alpha', {
         headers: {
-            Authorization: 'Bearer a68120018bf40f787da5320c32076f04',
+            Authorization: 'Bearer ' + process.env.smashgg_api_key
         },
     })
-
     client.request(query, variables).then(data => {            
         callback(data)
     })

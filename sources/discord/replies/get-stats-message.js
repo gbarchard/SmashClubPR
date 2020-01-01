@@ -4,16 +4,27 @@ var ordinal = require('./number-ordinal')
 
 var getStatsMessage = function getStatsMessage(message, callback) {
     var stats = {}
-    var dates = getPollDateRange(message[2],message[3])
+    var dates = getPollDateRange(message[message.length - 2],message[message.length - 1])
     var startDate = dates[0]
     var endDate = dates[1]
     if (startDate === null) {
         callback("Command not recognized. Type **!help** to see a list of commands")
     }
+
     else {
-        getStats(message[1],startDate,endDate,stats,function(stats,error) {
+        var name = ""
+        for (let index = 1; index < message.length; index++) {
+            const element = message[index]
+            if (element === "fall" || element === "spring") {
+                break
+            }
+            name = name + " " + element
+            name = name.trim()
+        }
+    
+        getStats(name,startDate,endDate,stats,function(stats,error) {
             if (error === true) {
-                callback("No stats found\n!stats <challonge username>")    
+                callback("No stats found\n!stats <smash.gg username>\nstats will not appear until after attending (3) tournaments")    
             }
             else {
                 callback("**" + stats.name + "**" +
