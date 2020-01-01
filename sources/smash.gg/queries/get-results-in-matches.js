@@ -25,7 +25,7 @@ const getSmashData = function getSmashData(id, callback) {
             }
         }
     }
-        standings(query: {}) {
+        standings(query: {perPage: 100}) {
             nodes {
             placement
             entrant {
