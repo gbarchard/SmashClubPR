@@ -9,7 +9,7 @@ var getPlacing = function getPlacing(name,allMatches,allParticipantsNames,allPar
     var bestWinPlace = 1000
         
     allParticipants.forEach(participant => {
-        if ((name === lowerCase(participant.participant.name) || name === lowerCase(participant.participant.challonge_username)) && participant.participant.final_rank != null) {
+        if (name === lowerCase(participant.participant.name) && participant.participant.final_rank != null) {
             tournamentsAttended++
             totalFinish = totalFinish + participant.participant.final_rank
             if (participant.participant.final_rank === 1) {
@@ -34,6 +34,9 @@ var getPlacing = function getPlacing(name,allMatches,allParticipantsNames,allPar
             });
         }
     });
+    if(bestWinName === "") {
+        bestWinName = "Nobody"
+    }
     callback(avgFinish,tournamentsWon,bestFinish,tournamentsAttended,bestWinPlace,bestWinName)
 }
 module.exports = getPlacing

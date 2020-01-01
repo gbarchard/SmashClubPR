@@ -29,20 +29,17 @@ var discordReplies = function discordReplies(bot) {
                                     "\n===========" +
                                     "\n!signup = signup link" +
                                     "\n!bracket = most recent bracket" +
-                                    "\n!volunteer = sign up to bring setups" +
                                     "\n\nStatistics" +
                                     "\n==========" +
                                     "\n(required) [optional]" +
                                     "\n\n(!pr) [spring/fall] [YYYY] \n= rankings" +
-                                    "\n\n(!stats) (challonge_username) [spring/fall] [YYYY] \n= stats on a player```"              
+                                    "\n\n(!stats) (smash.gg_username) [spring/fall] [YYYY] \n= stats on a player```"              
                         break
                     case "!version":
-                        response =  "```Version 1.1.0" +
-                                    "\n\n-!stages has been added" +
-                                    "\n-!pr response has new format" +
-                                    "\n-!stats is no longer case sensitive" +
-                                    "\n-!stats presents proper format if name is not found" +
-                                    "\n-!stats now has Best Win```"
+                        response =  "```Version 2.0.0" +
+                                    "\n\n-Now works with smash.gg" +
+                                    "\n-Now requires 3 tournaments to be in pr" +
+                                    "\n-Now requires 3 tournaments to have !stats displayed```"
                         break
                     case "!twitch":
                         response = "https://www.twitch.tv/southernsmashclub"
@@ -54,23 +51,16 @@ var discordReplies = function discordReplies(bot) {
                         response = "https://docs.google.com/document/d/1iZF_DF0UliM8L6OchkxxVScSaSPdkcDNIh-qcpkUGr4/edit?usp=sharing"
                         break
                     case "!stages":
-                        response = "https://bans.page/index.html#1-3-40h-44h-85h_33h-37h-19h-79hnVGhlIEJpcmQgSG91c2U="
+                        response = "https://bans.page/index.html#1-3-40h-44h-85h_39h-37h-19h-79hnVGhlIEJpcmQgSG91c2U="
                         break
                     case "!schedule":
-                        response = "https://docs.google.com/spreadsheets/d/1eli7zbbsUCi2ZJidXe_qu1IehJgF1p0w8mZhi9uwWPY/edit?usp=sharing"
-                        break
-                    case "!volunteer":
-                        response = "https://docs.google.com/spreadsheets/d/1P14-3Igzna7Ek-eWK38uixO6nsaL7keB-2BCTaCiNGI/edit?usp=sharing"
+                        response = "https://docs.google.com/spreadsheets/d/1hFVfwJ_26Z6aSyaYIWL9ccus_oXrABMyW8NMDCLw_yE/edit?usp=sharing"
                         break
                     case "!bracket":
-                        getBracket(function(bracket) {
-                            sendMessage(bot, channelID, bracket)
-                        })
+                        response = "https://smash.gg/thebirdhouse"
                         break
                     case "!signup":
-                        getSignup(function(signup) {
-                            sendMessage(bot, channelID, signup)
-                        })
+                        response = "https://smash.gg/thebirdhouse"
                         break
                     case "!stats":
                         getStatsMessage(message,function(stats) {
