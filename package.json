@@ -22,7 +22,11 @@
     "discord.io": "github:izy521/discord.io",
     "express": "^4.16.4",
     "graphql-request": "^1.8.2",
+    "node-cache": "^5.1.0",
     "node-rest-client": "^3.1.0",
     "npm": "^6.4.1"
+  },
+  "engines": {
+    "node": "12.14.0"
   }
 }
